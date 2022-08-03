@@ -97,6 +97,37 @@ export const getOne = async (req, res) => {
     }
 }
 
+export const getOnePrev = async (req, res) => {
+    try {
+        const postId = req.params.id
+
+        const posts = await PostModel.find({_id: {$lt: postId}}).sort({'_id': -1}).limit(1).populate('user')
+
+        res.json(posts)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            message: 'Не удалось получить статьи'
+        })
+    }
+}
+
+export const getOneNext = async (req, res) => {
+    try {
+        const postId = req.params.id
+
+        const posts = await PostModel.find({_id: {$gt: postId}}).limit(1).populate('user')
+
+        res.json(posts)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            message: 'Не удалось получить статьи'
+        })
+    }
+}
+
+
 export const remove = async (req, res) => {
     try {
         const postId = req.params.id
