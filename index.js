@@ -9,7 +9,7 @@ import {registerValidation, loginValidation, postCreateValidation} from './valid
 
 import { handleValidationErrors, checkAuth, checkHack } from './utils/index.js'
 
-import { UserController, PostController } from './controllers/index.js'
+import { UserController, PostController, ImageController } from './controllers/index.js'
 
 mongoose.connect(process.env.MONGODB_URI ? process.env.MONGODB_URI : "mongodb+srv://danila:1234qwer@cluster0.wiw6q.mongodb.net/mern-blog?retryWrites=true&w=majority")
     .then(() => console.log('DB ok'))
@@ -58,6 +58,12 @@ app.post('/posts', checkAuth, postCreateValidation, handleValidationErrors, Post
 app.delete('/posts/:id', checkAuth, PostController.remove)
 app.patch('/posts/:id', checkAuth, postCreateValidation, handleValidationErrors, PostController.update)
 app.patch('/posts/:id/comment', checkAuth, handleValidationErrors, PostController.comment)
+
+
+app.get('/images', ImageController.getAll)
+app.get('/images/limit/:length/date/:date', ImageController.getAllLimit)
+
+app.post('/images', ImageController.create)
 
 app.listen(process.env.PORT || 4444, (err) => {
     if (err) return console.log(err)

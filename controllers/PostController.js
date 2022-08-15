@@ -33,7 +33,7 @@ export const getLastComments = async (req, res) => {
 
 export const getAll = async (req, res) => {
     try {
-        const posts = await PostModel.find().populate('user').sort({_id:-1}).limit(req.query.length).exec()
+        const posts = await PostModel.find().populate('user').sort({_id:-1}).exec()
 
         res.json(posts)
     } catch (err) {
@@ -187,17 +187,11 @@ export const create = async (req, res) => {
 
         const post = await doc.save()
 
-        // const doc2 = new InfoModel({
-        //     postsLength: 18
-        // })
-        //
-        // await doc2.save()
-
         res.json(post)
     } catch (err) {
         console.log(err)
         res.status(500).json({
-            message: 'Не удалось статью'
+            message: 'Не удалось создать статью'
         })
     }
 }
