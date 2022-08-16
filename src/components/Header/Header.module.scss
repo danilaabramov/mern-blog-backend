@@ -1,0 +1,46 @@
+.root {
+  padding: 20px 0;
+  width: 100%;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 36px);
+    margin: 0 18px;
+    overflow: hidden;
+
+    @media (min-width: 600px) {
+      width: calc(100% - 80px);
+      margin: 0 40px;
+    }
+
+    @media (min-width: 900px) {
+      max-width: 1160px;
+      margin: auto;
+    }
+  }
+}
+
+.logo {
+  color: #000;
+  font-weight: 700;
+  line-height: 40px;
+  font-size: 22px;
+  letter-spacing: 0.15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: flex;
+}
+
+.buttons {
+  height: 40px;
+
+  button {
+    margin-left: 10px;
+    height: 40px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

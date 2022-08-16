@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  letter-spacing: -0.2px;
+}
+
+a {
+  color: #0089ff;
+}
+
+.main {
+  max-width: 1240px;
+  width: 100%;
+  display: flex;
+  margin: auto;
+  padding: 0 18px;
+
+  @media (min-width: 600px) {
+    padding: 0 40px;
+  }
+}
